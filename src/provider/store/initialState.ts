@@ -1,10 +1,12 @@
+import { AllPlaylists } from './stateInterfaces';
+
 const initialState = {
-  AllPlaylists: {
+  AllPlaylists: <AllPlaylists>{
     danceAll: { name: 'Dance all', songs: [] },
     relaxation: { name: 'Relaxation', songs: [] },
     roadTrip: { name: 'Road Trip', songs: [] },
   },
-  Songs: ['Bohemian Rhapsody', 'Enter Sandman', 'Happy', 'Queen'],
+  Songs: <string[]>['Bohemian Rhapsody', 'Enter Sandman', 'Happy', 'Queen'],
 };
 
 export default initialState;
