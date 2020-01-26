@@ -57,3 +57,6 @@ buck-out/
 
 # .expo
 .expo/
+
+# Env file
+.env
