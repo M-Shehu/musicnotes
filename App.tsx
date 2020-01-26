@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import AllPlaylistsScreen from './src/screens/AllPlaylists';
 import PlaylistScreen from './src/screens/Playlist';
 import SongSelectionScreen from './src/screens/SongSelection';
+import { Provider } from 'react-redux';
+import configureStore, { initialState } from './src/provider/store';
 
 /**
  * React stack navigator is being used for the navigation as
@@ -22,9 +23,19 @@ const AppNavigator = createStackNavigator(
     initialRouteName: 'AllPlaylists',
   },
 );
-
 const AppContainer = createAppContainer(AppNavigator);
 
+/**
+ * The store is being initialized with initial state that defines the playlists
+ * and songs being used in the app. The initial state of the number of playlists
+ * and songs can not be modified
+ */
+const store = configureStore(initialState);
+
 export default function App(): React.ReactNode {
-  return <AppContainer />;
+  return (
+    <Provider store={store}>
+      <AppContainer />
+    </Provider>
+  );
 }
