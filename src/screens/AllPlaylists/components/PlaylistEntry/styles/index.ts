@@ -4,7 +4,9 @@ const styles = ({ color }) =>
   StyleSheet.create({
     touchable: {
       borderRadius: 10,
-      margin: 10,
+      margin: 20,
+      marginBottom: 10,
+      marginTop: 10,
       backgroundColor: '#C7CCBD',
     },
     container: {
@@ -15,12 +17,23 @@ const styles = ({ color }) =>
       width: '100%',
     },
     colorBox: {
-      width: '5%',
       height: '100%',
+      flex: 1,
+      borderBottomLeftRadius: 10,
+      borderTopLeftRadius: 10,
       backgroundColor: color,
     },
-    textBox: {},
-    text: {},
+    playlistName: {
+      flex: 4,
+    },
+    noOfSongs: {
+      flex: 1,
+    },
+    text: {
+      fontSize: 15,
+      textAlign: 'center',
+      fontWeight: 'bold',
+    },
   });
 
 export default styles;
