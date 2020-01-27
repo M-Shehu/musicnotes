@@ -13,6 +13,7 @@ import { NavigationStackProp } from 'react-navigation-stack';
 import { NavigationOptionProps, AllPlaylistsInterface } from '../../interfaces';
 import AddButton from './components/AddButton';
 import { SONG_SELECTION_ROUTE } from '../../constants';
+import BasicLayout from '../../templates/BasicLayout';
 
 type ScreenProps = {
   /** The key of the playlist in the Redux store */
@@ -38,22 +39,26 @@ const Playlist: React.FC<Props> & {
   const playlistKey = navigation.getParam('playlistKey');
   const songs = allPlaylistsObj[playlistKey].songs;
   // Check if songs are in the playlist and render conditionally based on that info
-  return songs.length > 0 ? (
-    <View style={PlaylistStyle.container}>
-      <FlatList
-        data={songs}
-        renderItem={({ item }) => (
-          <Text style={PlaylistStyle.item}>{item}</Text>
-        )}
-      />
-    </View>
-  ) : (
-    <View style={PlaylistStyle.container}>
-      <Text style={PlaylistStyle.text}>
-        All songs to this playlist by tapping on the plus button in the top
-        right corner
-      </Text>
-    </View>
+  return (
+    <BasicLayout>
+      {songs.length > 0 ? (
+        <View style={PlaylistStyle.container}>
+          <FlatList
+            data={songs}
+            renderItem={({ item }) => (
+              <Text style={PlaylistStyle.item}>{item}</Text>
+            )}
+          />
+        </View>
+      ) : (
+        <View style={PlaylistStyle.container}>
+          <Text style={PlaylistStyle.text}>
+            All songs to this playlist by tapping on the plus button in the top
+            right corner
+          </Text>
+        </View>
+      )}
+    </BasicLayout>
   );
 };
 
