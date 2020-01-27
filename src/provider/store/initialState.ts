@@ -1,4 +1,4 @@
-import { AllPlaylistsInterface } from './stateInterfaces';
+import { AllPlaylistsInterface } from '../../interfaces';
 
 const initialState = {
   AllPlaylists: <AllPlaylistsInterface>{
