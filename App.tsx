@@ -6,6 +6,7 @@ import PlaylistScreen from './src/screens/Playlist';
 import SongSelectionScreen from './src/screens/SongSelection';
 import { Provider } from 'react-redux';
 import configureStore, { initialState } from './src/provider/store';
+import { Colors } from './src/constants';
 
 /**
  * React stack navigator is being used for the navigation as
@@ -21,6 +22,17 @@ const AppNavigator = createStackNavigator(
   },
   {
     initialRouteName: 'AllPlaylists',
+    /* The header config from HomeScreen is now here */
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: Colors.primary,
+      },
+      headerTintColor: Colors.white,
+      headerTitleStyle: {
+        fontSize: 20,
+        fontWeight: 'bold',
+      },
+    },
   },
 );
 const AppContainer = createAppContainer(AppNavigator);
