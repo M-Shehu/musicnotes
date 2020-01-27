@@ -2,8 +2,8 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 10,
     flex: 1,
-    backgroundColor: '#fff',
     justifyContent: 'flex-start',
   },
 });

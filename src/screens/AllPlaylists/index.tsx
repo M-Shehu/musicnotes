@@ -12,6 +12,7 @@ import { NavigationStackProp } from 'react-navigation-stack';
 import PlaylistEntry from './components/PlaylistEntry';
 import { AllPlaylistsInterface, NavigationOptionProps } from '../../interfaces';
 import { PLAYLIST_ROUTE } from '../../constants';
+import BasicLayout from '../../templates/BasicLayout';
 
 type Props = {
   /** navigation prop used for routing to other screens */
@@ -24,26 +25,28 @@ const AllPlaylists: React.FC<Props> & {
   const useAllPlaylists = () => useSelector(state => state.AllPlaylists);
   const allPlaylistsObj: AllPlaylistsInterface = useAllPlaylists();
   return (
-    <ScrollView>
-      <View style={AllPlaylistsStyle.container}>
-        {Object.keys(allPlaylistsObj).map(playlistKey => {
-          const playlist = allPlaylistsObj[playlistKey];
-          return (
-            <PlaylistEntry
-              key={playlistKey}
-              playlistName={playlist.name}
-              color={playlist.color}
-              onOpenPlaylist={() =>
-                navigation.navigate(PLAYLIST_ROUTE, {
-                  playlistKey,
-                })
-              }
-              numberOfSongs={playlist.songs.length}
-            />
-          );
-        })}
-      </View>
-    </ScrollView>
+    <BasicLayout>
+      <ScrollView>
+        <View style={AllPlaylistsStyle.container}>
+          {Object.keys(allPlaylistsObj).map(playlistKey => {
+            const playlist = allPlaylistsObj[playlistKey];
+            return (
+              <PlaylistEntry
+                key={playlistKey}
+                playlistName={playlist.name}
+                color={playlist.color}
+                onOpenPlaylist={() =>
+                  navigation.navigate(PLAYLIST_ROUTE, {
+                    playlistKey,
+                  })
+                }
+                numberOfSongs={playlist.songs.length}
+              />
+            );
+          })}
+        </View>
+      </ScrollView>
+    </BasicLayout>
   );
 };
 
