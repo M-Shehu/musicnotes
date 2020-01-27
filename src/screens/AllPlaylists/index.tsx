@@ -6,34 +6,49 @@
 
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import AllPlaylistsStyle from './styles';
 import { NavigationStackProp } from 'react-navigation-stack';
 import PlaylistEntry from './components/PlaylistEntry';
-import { AllPlaylistsInterface } from '../../provider/store/stateInterfaces';
+import { AllPlaylistsInterface, NavigationOptionProps } from '../../interfaces';
+import { PLAYLIST_ROUTE } from '../../constants';
 
 type Props = {
   /** navigation prop used for routing to other screens */
   navigation: NavigationStackProp;
 };
 
-const AllPlaylists: React.FC<Props> = ({ navigation }) => {
-  const allPlaylistsObj: AllPlaylistsInterface = useSelector(
-    state => state.AllPlaylists,
-  );
+const AllPlaylists: React.FC<Props> & {
+  navigationOptions: NavigationOptionProps;
+} = ({ navigation }) => {
+  const useAllPlaylists = () => useSelector(state => state.AllPlaylists);
+  const allPlaylistsObj: AllPlaylistsInterface = useAllPlaylists();
   return (
-    <View style={AllPlaylistsStyle.container}>
-      {Object.keys(allPlaylistsObj).map(playlistKey => (
-        <PlaylistEntry
-          key={playlistKey}
-          playlistName={allPlaylistsObj[playlistKey].name}
-          color={allPlaylistsObj[playlistKey].color}
-          onOpenPlaylist={() => navigation.navigate('Playlist')}
-          numberOfSongs={allPlaylistsObj[playlistKey].songs.length}
-        />
-      ))}
-    </View>
+    <ScrollView>
+      <View style={AllPlaylistsStyle.container}>
+        {Object.keys(allPlaylistsObj).map(playlistKey => {
+          const playlist = allPlaylistsObj[playlistKey];
+          return (
+            <PlaylistEntry
+              key={playlistKey}
+              playlistName={playlist.name}
+              color={playlist.color}
+              onOpenPlaylist={() =>
+                navigation.navigate(PLAYLIST_ROUTE, {
+                  playlistKey,
+                })
+              }
+              numberOfSongs={playlist.songs.length}
+            />
+          );
+        })}
+      </View>
+    </ScrollView>
   );
+};
+
+AllPlaylists.navigationOptions = {
+  headerTitle: 'All Playlists',
 };
 
 export default AllPlaylists;
