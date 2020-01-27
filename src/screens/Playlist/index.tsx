@@ -47,8 +47,11 @@ const Playlist: React.FC<Props> & {
         <View style={PlaylistStyle.container}>
           <FlatList
             data={songs}
+            keyExtractor={item => item}
             renderItem={({ item }) => (
-              <Text style={PlaylistStyle.item}>{item}</Text>
+              <View key={item} style={PlaylistStyle.view}>
+                <Text style={PlaylistStyle.item}>{item}</Text>
+              </View>
             )}
           />
         </View>

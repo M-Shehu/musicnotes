@@ -17,6 +17,9 @@ const styles = ({ color }) =>
       padding: 10,
       color: 'white',
       fontSize: 18,
+    },
+    view: {
+      padding: 10,
       borderBottomColor: Colors.white,
       borderBottomWidth: 2,
     },
