@@ -3,7 +3,7 @@
 */
 import { updatePlaylistWithSong } from './utils';
 import { UPDATE_PLAYLIST } from '../Playlist/constants';
-import { AllPlaylistsInterface } from '../../provider/store/stateInterfaces';
+import { AllPlaylistsInterface, UpdatePlaylistAction } from '../../interfaces';
 
 const initialState = <AllPlaylistsInterface>{
   danceAll: { name: 'Dance all', color: 'red', songs: [] },
@@ -11,7 +11,10 @@ const initialState = <AllPlaylistsInterface>{
   roadTrip: { name: 'Road Trip', color: 'yellow', songs: [] },
 };
 
-function allPlaylistsReducer(state = initialState, action) {
+function allPlaylistsReducer(
+  state: AllPlaylistsInterface = initialState,
+  action: UpdatePlaylistAction,
+): AllPlaylistsInterface {
   switch (action.type) {
     case UPDATE_PLAYLIST:
       return updatePlaylistWithSong(state, action);
