@@ -5,9 +5,12 @@
  */
 
 import React from 'react';
-import { Text, View, Button } from 'react-native';
+import { useSelector } from 'react-redux';
+import { View } from 'react-native';
 import AllPlaylistsStyle from './styles';
 import { NavigationStackProp } from 'react-navigation-stack';
+import PlaylistEntry from './components/PlaylistEntry';
+import { AllPlaylistsInterface } from '../../provider/store/stateInterfaces';
 
 type Props = {
   /** navigation prop used for routing to other screens */
@@ -15,17 +18,20 @@ type Props = {
 };
 
 const AllPlaylists: React.FC<Props> = ({ navigation }) => {
+  const allPlaylistsObj: AllPlaylistsInterface = useSelector(
+    state => state.AllPlaylists,
+  );
   return (
     <View style={AllPlaylistsStyle.container}>
-      <Text>This is the all playlist screen</Text>
-      <Button
-        title="Go to Playlist"
-        onPress={() => navigation.navigate('Playlist')}
-      />
-      <Button
-        title="Go to Song Selection"
-        onPress={() => navigation.navigate('SongSelection')}
-      />
+      {Object.keys(allPlaylistsObj).map(playlistKey => (
+        <PlaylistEntry
+          key={playlistKey}
+          playlistName={allPlaylistsObj[playlistKey].name}
+          color={allPlaylistsObj[playlistKey].color}
+          onOpenPlaylist={() => navigation.navigate('Playlist')}
+          numberOfSongs={allPlaylistsObj[playlistKey].songs.length}
+        />
+      ))}
     </View>
   );
 };
