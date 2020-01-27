@@ -7,6 +7,7 @@ export const Colors = {
   primary: '#00A82D',
   white: '#FFFFFF',
   lightPrimary: '#F1FFE7',
-  darkPrimary: '6C464E',
+  darkPrimary: '#6C464E',
+  complementary: '#4C4E4E',
   black: '#000000',
 };
