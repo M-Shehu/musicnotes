@@ -1,3 +1,3 @@
-export interface AllPlaylists {
-  [prop: string]: { name: string; songs: string[] };
+export interface AllPlaylistsInterface {
+  [prop: string]: { name: string; songs: string[]; color: string };
 }
