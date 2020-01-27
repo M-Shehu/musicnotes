@@ -38,6 +38,7 @@ const AllPlaylists: React.FC<Props> & {
                 onOpenPlaylist={() =>
                   navigation.navigate(PLAYLIST_ROUTE, {
                     playlistKey,
+                    color: playlist.color,
                   })
                 }
                 numberOfSongs={playlist.songs.length}

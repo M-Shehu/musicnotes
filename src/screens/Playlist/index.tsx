@@ -8,7 +8,7 @@ import React from 'react';
 import { Text, View, FlatList } from 'react-native';
 import { useSelector } from 'react-redux';
 
-import PlaylistStyle from './styles';
+import PlaylistStyleFunc from './styles';
 import { NavigationStackProp } from 'react-navigation-stack';
 import { NavigationOptionProps, AllPlaylistsInterface } from '../../interfaces';
 import AddButton from './components/AddButton';
@@ -35,7 +35,9 @@ const Playlist: React.FC<Props> & {
   navigationOptions: (screenProps) => NavigationOptionProps;
 } = ({ navigation }) => {
   const useAllPlaylists = () => useSelector(state => state.AllPlaylists);
+  const color = navigation.getParam('color', 'white');
   const allPlaylistsObj: AllPlaylistsInterface = useAllPlaylists();
+  const PlaylistStyle = PlaylistStyleFunc({ color });
   const playlistKey = navigation.getParam('playlistKey');
   const songs = allPlaylistsObj[playlistKey].songs;
   // Check if songs are in the playlist and render conditionally based on that info
@@ -53,7 +55,7 @@ const Playlist: React.FC<Props> & {
       ) : (
         <View style={PlaylistStyle.container}>
           <Text style={PlaylistStyle.text}>
-            All songs to this playlist by tapping on the plus button in the top
+            Add songs to this playlist by tapping on the add button in the top
             right corner
           </Text>
         </View>
