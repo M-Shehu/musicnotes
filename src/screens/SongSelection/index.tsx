@@ -39,9 +39,11 @@ const SongSelection: React.FC<Props> & {
   return (
     <FlatList
       data={allSongsArray}
+      keyExtractor={item => item}
       renderItem={({ item }) => (
         <TouchableHighlight
           underlayColor="white"
+          key={item}
           onPress={() => onAddSongToPlaylist(playlistKey, item)}>
           <View style={SongSelectionStyle.view}>
             <Text style={SongSelectionStyle.item}>{item}</Text>
