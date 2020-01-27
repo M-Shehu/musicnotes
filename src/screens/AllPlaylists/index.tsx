@@ -6,7 +6,7 @@
 
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, Image } from 'react-native';
 import AllPlaylistsStyle from './styles';
 import { NavigationStackProp } from 'react-navigation-stack';
 import PlaylistEntry from './components/PlaylistEntry';
@@ -45,6 +45,10 @@ const AllPlaylists: React.FC<Props> & {
               />
             );
           })}
+          <Image
+            style={AllPlaylistsStyle.backgroundImage}
+            source={require('../../../assets/images/music-notes-logo.png')}
+          />
         </View>
       </ScrollView>
     </BasicLayout>

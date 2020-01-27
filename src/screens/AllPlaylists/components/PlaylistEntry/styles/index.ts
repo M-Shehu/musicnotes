@@ -1,13 +1,18 @@
 import { StyleSheet } from 'react-native';
+import { Colors } from '../../../../../constants';
 
 const styles = ({ color }) =>
   StyleSheet.create({
     touchable: {
       borderRadius: 10,
+      shadowOffset: { width: 0, height: 4 },
+      shadowColor: 'black',
+      shadowOpacity: 0.2,
+      shadowRadius: 8,
       margin: 20,
       marginBottom: 10,
       marginTop: 10,
-      backgroundColor: '#C7CCBD',
+      backgroundColor: Colors.white,
     },
     container: {
       flexDirection: 'row',

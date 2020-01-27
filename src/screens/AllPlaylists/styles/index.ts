@@ -5,6 +5,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
     flex: 1,
     justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  backgroundImage: {
+    marginTop: 70,
+    width: '80%',
+    height: 200,
+    opacity: 0.3,
   },
 });
 
