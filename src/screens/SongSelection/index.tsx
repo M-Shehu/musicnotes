@@ -41,8 +41,9 @@ const SongSelection: React.FC<Props> & {
       data={allSongsArray}
       renderItem={({ item }) => (
         <TouchableHighlight
+          underlayColor="white"
           onPress={() => onAddSongToPlaylist(playlistKey, item)}>
-          <View>
+          <View style={SongSelectionStyle.view}>
             <Text style={SongSelectionStyle.item}>{item}</Text>
             {playlistSongs.includes(item) && (
               <Text style={SongSelectionStyle.selectedTag}>Selected</Text>
