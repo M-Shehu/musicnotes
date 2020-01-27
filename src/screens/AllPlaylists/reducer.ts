@@ -8,7 +8,7 @@ import { AllPlaylistsInterface, UpdatePlaylistAction } from '../../interfaces';
 const initialState = <AllPlaylistsInterface>{
   danceAll: { name: 'Dance all', color: 'red', songs: [] },
   relaxation: { name: 'Relaxation', color: 'blue', songs: [] },
-  roadTrip: { name: 'Road Trip', color: 'yellow', songs: [] },
+  roadTrip: { name: 'Road Trip', color: 'purple', songs: [] },
 };
 
 function allPlaylistsReducer(
