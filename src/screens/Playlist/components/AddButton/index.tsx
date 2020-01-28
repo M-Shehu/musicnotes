@@ -7,6 +7,7 @@
 import React from 'react';
 import { Text, TouchableHighlight, Button } from 'react-native';
 import AddButtonStyle from './styles';
+import { Colors } from '../../../../constants';
 
 type Props = {
   /** the function runs when add playlist button is clicked */
@@ -14,8 +15,7 @@ type Props = {
 };
 
 const AddButton: React.FC<Props> = ({ onAddSong }) => {
-  // This is being used to pass the color of the playlist down to the styles
-  return <Button onPress={onAddSong} title="Add" />;
+  return <Button onPress={onAddSong} color={Colors.white} title="Add" />;
 };
 
 export default AddButton;

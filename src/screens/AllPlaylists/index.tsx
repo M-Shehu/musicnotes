@@ -7,12 +7,14 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { ScrollView, View, Image } from 'react-native';
-import AllPlaylistsStyle from './styles';
 import { NavigationStackProp } from 'react-navigation-stack';
+
 import PlaylistEntry from './components/PlaylistEntry';
 import { AllPlaylistsInterface, NavigationOptionProps } from '../../interfaces';
 import { PLAYLIST_ROUTE } from '../../constants';
 import BasicLayout from '../../templates/BasicLayout';
+
+import AllPlaylistsStyle from './styles';
 
 type Props = {
   /** navigation prop used for routing to other screens */
@@ -22,6 +24,7 @@ type Props = {
 const AllPlaylists: React.FC<Props> & {
   navigationOptions: NavigationOptionProps;
 } = ({ navigation }) => {
+  // All playlist is selected from Redux state
   const useAllPlaylists = () => useSelector(state => state.AllPlaylists);
   const allPlaylistsObj: AllPlaylistsInterface = useAllPlaylists();
   return (

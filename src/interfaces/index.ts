@@ -1,6 +1,8 @@
 import { UPDATE_PLAYLIST } from '../screens/Playlist/constants';
 
 export interface AllPlaylistsInterface {
+  // All playlist is saved in an object instead of an array for
+  // instant lookup of playlists
   [prop: string]: { name: string; songs: string[]; color: string };
 }
 

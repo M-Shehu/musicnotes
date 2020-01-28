@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
+import { Provider } from 'react-redux';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import SplashScreen from 'react-native-splash-screen';
+
 import AllPlaylistsScreen from './src/screens/AllPlaylists';
 import PlaylistScreen from './src/screens/Playlist';
 import SongSelectionScreen from './src/screens/SongSelection';
-import { Provider } from 'react-redux';
-import SplashScreen from 'react-native-splash-screen';
 import configureStore, { initialState } from './src/provider/store';
 import { Colors } from './src/constants';
 
@@ -23,7 +24,7 @@ const AppNavigator = createStackNavigator(
   },
   {
     initialRouteName: 'AllPlaylists',
-    /* The header config from HomeScreen is now here */
+    /* defaultNavigationOptions for setting up the header styles */
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: Colors.primary,
@@ -46,6 +47,7 @@ const AppContainer = createAppContainer(AppNavigator);
 const store = configureStore(initialState);
 
 export default function App(): React.ReactNode {
+  // Hide SplashScreen as soon as App start
   useEffect(() => {
     SplashScreen.hide();
   }, []);

@@ -7,11 +7,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Text, FlatList, Button, View, TouchableHighlight } from 'react-native';
-import SongSelectionStyle from './styles';
 import { NavigationStackProp } from 'react-navigation-stack';
-import { NavigationOptionProps, AllPlaylistsInterface } from '../../interfaces';
-import { PLAYLIST_ROUTE } from '../../constants';
+
+import { NavigationOptionProps, StateInterface } from '../../interfaces';
+import { PLAYLIST_ROUTE, Colors } from '../../constants';
 import { updatePlaylist } from '../Playlist/actions';
+
+import SongSelectionStyle from './styles';
 
 type ScreenProps = {
   /** The key of the playlist in the Redux store */
@@ -28,12 +30,21 @@ type Props = {
 const SongSelection: React.FC<Props> & {
   navigationOptions: (screenProps) => NavigationOptionProps;
 } = ({ navigation }) => {
-  const useAllPlaylists = () => useSelector(state => state.AllPlaylists);
-  const allPlaylistsObj: AllPlaylistsInterface = useAllPlaylists();
-  const allSongsArray: string[] = useSelector(state => state.Songs);
-  const playlistKey = navigation.getParam('playlistKey');
-  const playlistSongs = allPlaylistsObj[playlistKey].songs;
   const dispatch = useDispatch();
+  // Select all playlists and songs from Redux state
+  const useAllState = () => useSelector(state => state);
+  const {
+    AllPlaylists: allPlaylistsObj,
+    Songs: allSongsArray,
+  }: StateInterface = useAllState();
+
+  // Get selected playlist from previous location being navigated from
+  const playlistKey = navigation.getParam('playlistKey');
+
+  // Select the songs from all playlists using the playlistKey
+  const playlistSongs = allPlaylistsObj[playlistKey].songs;
+
+  // dispatch the action update playlist when a song is pressed
   const onAddSongToPlaylist = (key, song) =>
     dispatch(updatePlaylist(key, song));
   return (
@@ -60,8 +71,13 @@ const SongSelection: React.FC<Props> & {
 SongSelection.navigationOptions = ({ navigation }) => ({
   headerTitle: 'Select Songs',
   headerRight: () => (
-    <Button onPress={() => navigation.navigate(PLAYLIST_ROUTE)} title="Done" />
+    <Button
+      onPress={() => navigation.navigate(PLAYLIST_ROUTE)}
+      color={Colors.white}
+      title="Done"
+    />
   ),
+  headerLeft: () => {},
 });
 
 export default SongSelection;
