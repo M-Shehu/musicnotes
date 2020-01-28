@@ -1,4 +1,7 @@
-import { AllPlaylistsInterface, UpdatePlaylistAction } from '../../interfaces';
+import {
+  AllPlaylistsInterface,
+  UpdatePlaylistAction,
+} from '../../../interfaces';
 /**
  * Updates the playlist in the redux store with the chosen song
  * If the song already exists in the redux store, the song is removed

@@ -5,8 +5,8 @@
 const initialState = <string[]>[
   'Bohemian Rhapsody',
   'Enter Sandman',
-  'Happy',
-  'Queen',
+  'The duck song',
+  'What is love?',
 ];
 
 function songSelectionReducer(state = initialState, action) {
