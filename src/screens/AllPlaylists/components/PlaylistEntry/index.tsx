@@ -17,6 +17,8 @@ type Props = {
   playlistName: string;
   /** number of songs within the playlist */
   numberOfSongs: number;
+  /** key of the playlist for testing */
+  playlistKey: string;
   /** the function that runs when an entry is clicked */
   onOpenPlaylist: () => boolean;
 };
@@ -25,6 +27,7 @@ const PlaylistEntry: React.FC<Props> = ({
   color,
   playlistName,
   numberOfSongs,
+  playlistKey,
   onOpenPlaylist,
 }) => {
   // This is being used to pass the color of the playlist down to the styles
@@ -33,6 +36,7 @@ const PlaylistEntry: React.FC<Props> = ({
     <TouchableHighlight
       onPress={onOpenPlaylist}
       underlayColor="white"
+      testID={`entry-${playlistKey}`}
       style={PlaylistEntryStyle.touchable}>
       <View style={PlaylistEntryStyle.container}>
         <View style={PlaylistEntryStyle.colorBox}></View>

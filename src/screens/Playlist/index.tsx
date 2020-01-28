@@ -56,6 +56,7 @@ const Playlist: React.FC<Props> & {
         {songs.length > 0 ? (
           <FlatList
             data={songs}
+            testID={`addedSong-${playlistKey}`}
             keyExtractor={item => item}
             renderItem={({ item }) => (
               <View key={item} style={PlaylistStyle.view}>

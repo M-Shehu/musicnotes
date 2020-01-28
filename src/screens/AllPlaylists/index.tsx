@@ -36,6 +36,7 @@ const AllPlaylists: React.FC<Props> & {
             return (
               <PlaylistEntry
                 key={playlistKey}
+                playlistKey={playlistKey}
                 playlistName={playlist.name}
                 color={playlist.color}
                 onOpenPlaylist={() =>
