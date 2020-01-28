@@ -60,3 +60,6 @@ buck-out/
 
 # Env file
 .env
+
+# Pods 
+ios/Pods
