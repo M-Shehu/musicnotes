@@ -49,7 +49,7 @@ const store = configureStore(initialState);
 export default function App(): React.ReactNode {
   // Hide SplashScreen as soon as App start
   useEffect(() => {
-    SplashScreen.hide();
+    SplashScreen && SplashScreen.hide();
   }, []);
   return (
     <Provider store={store}>
