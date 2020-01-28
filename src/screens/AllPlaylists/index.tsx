@@ -27,6 +27,12 @@ const AllPlaylists: React.FC<Props> & {
   // All playlist is selected from Redux state
   const useAllPlaylists = () => useSelector(state => state.AllPlaylists);
   const allPlaylistsObj: AllPlaylistsInterface = useAllPlaylists();
+
+  const onOpenPlaylist = playlistKey => () =>
+    navigation.navigate(PLAYLIST_ROUTE, {
+      playlistKey,
+      color: allPlaylistsObj[playlistKey].color,
+    });
   return (
     <BasicLayout>
       <ScrollView>
@@ -39,12 +45,7 @@ const AllPlaylists: React.FC<Props> & {
                 playlistKey={playlistKey}
                 playlistName={playlist.name}
                 color={playlist.color}
-                onOpenPlaylist={() =>
-                  navigation.navigate(PLAYLIST_ROUTE, {
-                    playlistKey,
-                    color: playlist.color,
-                  })
-                }
+                onOpenPlaylist={onOpenPlaylist(playlistKey)}
                 numberOfSongs={playlist.songs.length}
               />
             );
