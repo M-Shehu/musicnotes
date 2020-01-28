@@ -9,6 +9,7 @@
   "dependencies": {
     "@react-native-community/async-storage": "^1.7.1",
     "@react-native-community/masked-view": "^0.1.6",
+    "@testing-library/react-native": "^5.0.3",
     "expo": "~36.0.0",
     "immutable": "^4.0.0-rc.12",
     "react": "~16.9.0",
@@ -45,6 +46,9 @@
       "jsx",
       "json",
       "node"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|@react-native-community|react-clone-referenced-element|expo(nent)?|@expo(nent)?/.*|react-navigation|react-navigation-stack|@react-navigation/.*|sentry-expo|native-base))"
     ]
   },
   "private": true
