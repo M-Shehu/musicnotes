@@ -35,9 +35,15 @@ const styles = ({ color }) =>
       flex: 1,
     },
     text: {
-      fontSize: 15,
+      fontSize: 20,
       textAlign: 'center',
       fontWeight: 'bold',
+    },
+    textTitle: {
+      textAlign: 'center',
+      fontSize: 15,
+      fontWeight: '100',
+      marginBottom: 20,
     },
   });
 

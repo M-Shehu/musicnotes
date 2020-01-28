@@ -41,9 +41,11 @@ const PlaylistEntry: React.FC<Props> = ({
       <View style={PlaylistEntryStyle.container}>
         <View style={PlaylistEntryStyle.colorBox}></View>
         <View style={PlaylistEntryStyle.playlistName}>
+          <Text style={PlaylistEntryStyle.textTitle}>Playlist</Text>
           <Text style={PlaylistEntryStyle.text}>{playlistName}</Text>
         </View>
         <View style={PlaylistEntryStyle.noOfSongs}>
+          <Text style={PlaylistEntryStyle.textTitle}>Songs</Text>
           <Text style={PlaylistEntryStyle.text}>{numberOfSongs}</Text>
         </View>
       </View>
