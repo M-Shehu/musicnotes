@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, getByTestId } from '@testing-library/react-native';
+import { fireEvent } from '@testing-library/react-native';
 
 import AllPlaylists from '../src/screens/AllPlaylists';
 import Playlist from '../src/screens/Playlist';
@@ -44,6 +44,8 @@ jest.mock('react-native-gesture-handler', () => {
 });
 
 const allPlaylists = initialState.AllPlaylists;
+const firstPlaylistKey = Object.keys(allPlaylists)[0];
+const firstPlaylist = allPlaylists[firstPlaylistKey];
 
 describe('<App />', () => {
   let renderedApp;
@@ -101,15 +103,41 @@ describe('<Playlist />', () => {
 
   it('Should navigate into a playlist when clicked', async () => {
     const { findByText, getByTestId } = renderedApp;
-    fireEvent.press(getByTestId(`entry-${Object.keys(allPlaylists)[0]}`));
-    await expect(findByText(Object.keys(allPlaylists)[0].name)).toBeTruthy();
+    fireEvent.press(getByTestId(`entry-${firstPlaylistKey}`));
+    await expect(findByText(firstPlaylistKey.name)).toBeTruthy();
   });
 
-  it.skip('Should contain the number of songs shown in the all playlist screen', async () => {
+  it('Should contain the number of songs shown in the all playlist screen', async () => {
     const { getByTestId, queryAllByTestId } = renderedApp;
-    fireEvent.press(getByTestId(`entry-${Object.keys(allPlaylists)[0]}`));
+    fireEvent.press(getByTestId(`entry-${firstPlaylistKey}`));
     await expect(queryAllByTestId(`addedSong`, { exact: false }).length).toBe(
-      Object.keys(allPlaylists)[0].songs.length,
+      firstPlaylist.songs.length,
+    );
+  });
+});
+
+describe('<SongSelection />', () => {
+  let renderedApp;
+  beforeEach(() => {
+    renderedApp = renderWithNavigation({
+      screens: { AllPlaylists, Playlist, SongSelection },
+    });
+    const { getByTestId } = renderedApp;
+    fireEvent.press(getByTestId(`entry-${firstPlaylistKey}`));
+    fireEvent.press(getByTestId('addButton'));
+  });
+
+  it('Should navigate into song selection when clicked', async () => {
+    const { findByText } = renderedApp;
+    await expect(findByText('Select Songs')).toBeTruthy();
+  });
+
+  it('Should select all songs from the song list', async () => {
+    const { queryAllByTestId, getByTestId, findByText } = renderedApp;
+    queryAllByTestId('song').forEach(async song => await fireEvent.press(song));
+    fireEvent.press(getByTestId('doneButton'));
+    await expect(queryAllByTestId(`addedSong`, { exact: false }).length).toBe(
+      1,
     );
   });
 });

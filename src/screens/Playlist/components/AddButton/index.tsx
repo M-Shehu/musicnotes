@@ -15,7 +15,14 @@ type Props = {
 };
 
 const AddButton: React.FC<Props> = ({ onAddSong }) => {
-  return <Button onPress={onAddSong} color={Colors.white} title="Add" />;
+  return (
+    <Button
+      testID="addButton"
+      onPress={onAddSong}
+      color={Colors.white}
+      title="Add"
+    />
+  );
 };
 
 export default AddButton;

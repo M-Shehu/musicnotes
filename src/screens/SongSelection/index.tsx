@@ -54,6 +54,7 @@ const SongSelection: React.FC<Props> & {
       renderItem={({ item }) => (
         <TouchableHighlight
           underlayColor="white"
+          testID="song"
           key={item}
           onPress={() => onAddSongToPlaylist(playlistKey, item)}>
           <View style={SongSelectionStyle.view}>
@@ -73,6 +74,7 @@ SongSelection.navigationOptions = ({ navigation }) => ({
   headerRight: () => (
     <Button
       onPress={() => navigation.navigate(PLAYLIST_ROUTE)}
+      testID="doneButton"
       color={Colors.white}
       title="Done"
     />
