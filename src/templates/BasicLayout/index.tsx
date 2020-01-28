@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, StatusBar } from 'react-native';
+import { StatusBar, Platform } from 'react-native';
 import BasicLayoutStyles from './styles';
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
 const BasicLayout: React.FC<Props> = ({ children }) => {
   return (
     <>
-      <StatusBar barStyle="dark-content" />
+      {Platform.OS === 'ios' && <StatusBar barStyle="light-content" />}
       {children}
     </>
   );

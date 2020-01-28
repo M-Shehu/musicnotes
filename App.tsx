@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import AllPlaylistsScreen from './src/screens/AllPlaylists';
 import PlaylistScreen from './src/screens/Playlist';
 import SongSelectionScreen from './src/screens/SongSelection';
 import { Provider } from 'react-redux';
+import SplashScreen from 'react-native-splash-screen';
 import configureStore, { initialState } from './src/provider/store';
 import { Colors } from './src/constants';
 
@@ -45,6 +46,9 @@ const AppContainer = createAppContainer(AppNavigator);
 const store = configureStore(initialState);
 
 export default function App(): React.ReactNode {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
   return (
     <Provider store={store}>
       <AppContainer />
