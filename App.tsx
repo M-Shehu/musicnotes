@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import SplashScreen from 'react-native-splash-screen';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import AllPlaylistsScreen from './src/screens/AllPlaylists';
 import PlaylistScreen from './src/screens/Playlist';
@@ -44,7 +45,7 @@ const AppContainer = createAppContainer(AppNavigator);
  * and songs being used in the app. The initial state of the number of playlists
  * and songs can not be modified
  */
-const store = configureStore(initialState);
+const { store, persistor } = configureStore(initialState);
 
 export default function App(): React.ReactNode {
   // Hide SplashScreen as soon as App start
@@ -53,7 +54,9 @@ export default function App(): React.ReactNode {
   }, []);
   return (
     <Provider store={store}>
-      <AppContainer />
+      <PersistGate loading={null} persistor={persistor}>
+        <AppContainer />
+      </PersistGate>
     </Provider>
   );
 }
