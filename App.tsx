@@ -4,12 +4,14 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import SplashScreen from 'react-native-splash-screen';
 import { PersistGate } from 'redux-persist/integration/react';
+import { USE_REDUX_PERSIST } from 'react-native-dotenv';
 
 import AllPlaylistsScreen from './src/screens/AllPlaylists';
 import PlaylistScreen from './src/screens/Playlist';
 import SongSelectionScreen from './src/screens/SongSelection';
 import configureStore, { initialState } from './src/provider/store';
 import { Colors } from './src/constants';
+import MusicPlayerScreen from './src/screens/MusicPlayer';
 
 /**
  * React stack navigator is being used for the navigation as
@@ -22,6 +24,7 @@ const AppNavigator = createStackNavigator(
     AllPlaylists: AllPlaylistsScreen,
     Playlist: PlaylistScreen,
     SongSelection: SongSelectionScreen,
+    MusicPlayer: MusicPlayerScreen,
   },
   {
     initialRouteName: 'AllPlaylists',
@@ -54,9 +57,13 @@ export default function App(): React.ReactNode {
   }, []);
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+      {USE_REDUX_PERSIST === 'true' ? (
+        <PersistGate loading={null} persistor={persistor}>
+          <AppContainer />
+        </PersistGate>
+      ) : (
         <AppContainer />
-      </PersistGate>
+      )}
     </Provider>
   );
 }
