@@ -73,7 +73,7 @@ const Playlist: React.FC<Props> & {
             keyExtractor={item => item.key}
             renderItem={({ item }) => (
               <TouchableHighlight
-                underlayColor="white"
+                underlayColor={color}
                 testID="playlist-song"
                 key={item.key}
                 onPress={onUpdateCurrentSongAndNavigate(item)}>
