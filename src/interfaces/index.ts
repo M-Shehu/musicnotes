@@ -37,6 +37,7 @@ export interface SongsInterface {
   key: string;
   songName: string;
   artistName: string;
+  songPath: string;
 }
 
 export interface CurrentSongInterface extends SongsInterface {
