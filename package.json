@@ -9,6 +9,7 @@
   "dependencies": {
     "@react-native-community/async-storage": "^1.7.1",
     "@react-native-community/masked-view": "^0.1.6",
+    "@react-native-community/slider": "^2.0.8",
     "@testing-library/react-native": "^5.0.3",
     "expo": "~36.0.0",
     "expo-av": "^8.0.0",
@@ -21,7 +22,9 @@
     "react-native-reanimated": "^1.7.0",
     "react-native-safe-area-context": "^0.6.2",
     "react-native-screens": "^2.0.0-alpha.29",
+    "react-native-sound": "^0.11.0",
     "react-native-splash-screen": "^3.2.0",
+    "react-native-svg": "^11.0.1",
     "react-native-unimodules": "~0.7.0",
     "react-native-web": "~0.11.7",
     "react-navigation": "^4.0.10",
