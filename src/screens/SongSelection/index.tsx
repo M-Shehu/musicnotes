@@ -9,7 +9,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Text, FlatList, Button, View, TouchableHighlight } from 'react-native';
 import { NavigationStackProp } from 'react-navigation-stack';
 
-import { NavigationOptionProps, StateInterface } from '../../interfaces';
+import {
+  NavigationOptionProps,
+  StateInterface,
+  SongsInterface,
+} from '../../interfaces';
 import { PLAYLIST_ROUTE, Colors } from '../../constants';
 import { updatePlaylist } from '../Playlist/actions';
 
@@ -19,7 +23,7 @@ type ScreenProps = {
   /** The key of the playlist in the Redux store */
   playlistKey: string;
   /** The array of songs in the playlist */
-  songs: string[];
+  songs: SongsInterface[];
 };
 
 type Props = {
@@ -45,20 +49,21 @@ const SongSelection: React.FC<Props> & {
   const playlistSongs = allPlaylistsObj[playlistKey].songs;
 
   // dispatch the action update playlist when a song is pressed
-  const onAddSongToPlaylist = (key, song) =>
+  const onAddSongToPlaylist = (key, song) => () =>
     dispatch(updatePlaylist(key, song));
+
   return (
     <FlatList
       data={allSongsArray}
-      keyExtractor={item => item}
+      keyExtractor={item => item.key}
       renderItem={({ item }) => (
         <TouchableHighlight
           underlayColor="white"
           testID="song"
-          key={item}
-          onPress={() => onAddSongToPlaylist(playlistKey, item)}>
+          key={item.key}
+          onPress={onAddSongToPlaylist(playlistKey, item)}>
           <View style={SongSelectionStyle.view}>
-            <Text style={SongSelectionStyle.item}>{item}</Text>
+            <Text style={SongSelectionStyle.item}>{item.songName}</Text>
             {playlistSongs.includes(item) && (
               <Text style={SongSelectionStyle.selectedTag}>Selected</Text>
             )}

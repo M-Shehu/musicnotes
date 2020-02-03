@@ -1,12 +1,30 @@
+import { SongsInterface } from '../../interfaces';
+
 /*
     Song Selection reducer
 */
 
-const initialState = <string[]>[
-  'Bohemian Rhapsody',
-  'Enter Sandman',
-  'The duck song',
-  'What is love?',
+const initialState = <SongsInterface[]>[
+  {
+    key: 'bohemianQueen',
+    songName: 'Bohemian Rhapsody',
+    artistName: 'Queen',
+  },
+  {
+    key: 'enterMetallica',
+    songName: 'Enter Sandman',
+    artistName: 'Metallica',
+  },
+  {
+    key: 'duckSongBryant',
+    songName: 'The duck song',
+    artistName: 'Bryant Oden',
+  },
+  {
+    key: 'whatIsLoveHaddaway',
+    songName: 'What is love?',
+    artistName: 'Haddaway',
+  },
 ];
 
 function songSelectionReducer(state = initialState, action) {
