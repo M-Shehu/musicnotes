@@ -11,6 +11,10 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		72E37E7923E81FF200140C78 /* duck_song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 72E37E7523E81FF200140C78 /* duck_song.mp3 */; };
+		72E37E7A23E81FF200140C78 /* bohemian_rhapsody.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 72E37E7623E81FF200140C78 /* bohemian_rhapsody.mp3 */; };
+		72E37E7B23E81FF200140C78 /* what_is_love.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 72E37E7723E81FF200140C78 /* what_is_love.mp3 */; };
+		72E37E7C23E81FF200140C78 /* enter_sandman.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 72E37E7823E81FF200140C78 /* enter_sandman.mp3 */; };
 		7B0C5784998A29E517983E0C /* libPods-Musicnotes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2502ACF51380E8237829647D /* libPods-Musicnotes.a */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +30,10 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Musicnotes/main.m; sourceTree = "<group>"; };
 		2502ACF51380E8237829647D /* libPods-Musicnotes.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Musicnotes.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		72E37E7523E81FF200140C78 /* duck_song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = duck_song.mp3; sourceTree = "<group>"; };
+		72E37E7623E81FF200140C78 /* bohemian_rhapsody.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bohemian_rhapsody.mp3; sourceTree = "<group>"; };
+		72E37E7723E81FF200140C78 /* what_is_love.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = what_is_love.mp3; sourceTree = "<group>"; };
+		72E37E7823E81FF200140C78 /* enter_sandman.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enter_sandman.mp3; sourceTree = "<group>"; };
 		E40B1F720DE0D29BF6B90074 /* Pods-Musicnotes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Musicnotes.release.xcconfig"; path = "Target Support Files/Pods-Musicnotes/Pods-Musicnotes.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -46,6 +54,7 @@
 		13B07FAE1A68108700A75B9A /* Musicnotes */ = {
 			isa = PBXGroup;
 			children = (
+				72E37E7423E81FF200140C78 /* sounds */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -75,6 +84,17 @@
 				E40B1F720DE0D29BF6B90074 /* Pods-Musicnotes.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		72E37E7423E81FF200140C78 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				72E37E7523E81FF200140C78 /* duck_song.mp3 */,
+				72E37E7623E81FF200140C78 /* bohemian_rhapsody.mp3 */,
+				72E37E7723E81FF200140C78 /* what_is_love.mp3 */,
+				72E37E7823E81FF200140C78 /* enter_sandman.mp3 */,
+			);
+			path = sounds;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -166,8 +186,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72E37E7923E81FF200140C78 /* duck_song.mp3 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				72E37E7C23E81FF200140C78 /* enter_sandman.mp3 in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				72E37E7A23E81FF200140C78 /* bohemian_rhapsody.mp3 in Resources */,
+				72E37E7B23E81FF200140C78 /* what_is_love.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
