@@ -1,0 +1,1 @@
+export const UPDATE_CURRENT_SONG = '@MusicPlayer/UPDATE_CURRENT_SONG';
