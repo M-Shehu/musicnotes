@@ -5,16 +5,21 @@
  */
 
 import React from 'react';
-import { Text, View, FlatList } from 'react-native';
-import { useSelector } from 'react-redux';
+import { Text, View, FlatList, TouchableHighlight } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavigationStackProp } from 'react-navigation-stack';
 
-import { NavigationOptionProps, AllPlaylistsInterface } from '../../interfaces';
+import {
+  NavigationOptionProps,
+  AllPlaylistsInterface,
+  SongsInterface,
+} from '../../interfaces';
 import AddButton from './components/AddButton';
-import { SONG_SELECTION_ROUTE } from '../../constants';
+import { SONG_SELECTION_ROUTE, MUSIC_PLAYER_ROUTE } from '../../constants';
 import BasicLayout from '../../templates/BasicLayout';
 
 import PlaylistStyleFunc from './styles';
+import { updateCurrentSong } from '../MusicPlayer/actions';
 
 type ScreenProps = {
   /** The key of the playlist in the Redux store */
@@ -24,7 +29,7 @@ type ScreenProps = {
   /** The color of the playlist */
   color: string;
   /** The array of songs in the playlist */
-  songs: string[];
+  songs: SongsInterface[];
 };
 
 type Props = {
@@ -35,6 +40,7 @@ type Props = {
 const Playlist: React.FC<Props> & {
   navigationOptions: (screenProps) => NavigationOptionProps;
 } = ({ navigation }) => {
+  const dispatch = useDispatch();
   // Select all playlist from Redux state
   const useAllPlaylists = () => useSelector(state => state.AllPlaylists);
   const allPlaylistsObj: AllPlaylistsInterface = useAllPlaylists();
@@ -49,6 +55,13 @@ const Playlist: React.FC<Props> & {
   // Select the songs from all playlists using the playlistKey
   const songs = allPlaylistsObj[playlistKey].songs;
 
+  const onUpdateCurrentSongAndNavigate = item => () => {
+    dispatch(updateCurrentSong({ ...item, playlistKey }));
+    navigation.navigate(MUSIC_PLAYER_ROUTE, {
+      color,
+    });
+  };
+
   // Check if songs are in the playlist and render conditionally based on that info
   return (
     <BasicLayout>
@@ -57,11 +70,17 @@ const Playlist: React.FC<Props> & {
           <FlatList
             data={songs}
             testID={`addedSong-${playlistKey}`}
-            keyExtractor={item => item}
+            keyExtractor={item => item.key}
             renderItem={({ item }) => (
-              <View key={item} style={PlaylistStyle.view}>
-                <Text style={PlaylistStyle.item}>{item}</Text>
-              </View>
+              <TouchableHighlight
+                underlayColor="white"
+                testID="playlist-song"
+                key={item.key}
+                onPress={onUpdateCurrentSongAndNavigate(item)}>
+                <View key={item.key} style={PlaylistStyle.view}>
+                  <Text style={PlaylistStyle.item}>{item.songName}</Text>
+                </View>
+              </TouchableHighlight>
             )}
           />
         ) : (
