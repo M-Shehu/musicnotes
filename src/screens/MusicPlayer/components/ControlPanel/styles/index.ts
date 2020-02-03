@@ -5,21 +5,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
-  text: {
-    textAlign: 'center',
-    color: 'white',
-  },
-  item: {
+  buttons: {
+    margin: 20,
     padding: 10,
-    color: 'white',
-    fontSize: 18,
-  },
-  view: {
-    padding: 10,
-    borderBottomColor: Colors.white,
-    borderBottomWidth: 2,
+    flex: 1,
+    alignItems: 'center',
   },
 });
 

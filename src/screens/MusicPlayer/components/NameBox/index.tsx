@@ -19,7 +19,12 @@ type Props = {
 };
 
 const NameBox: React.FC<Props> = ({ songName, artistName }) => {
-  return <View style={NameBoxStyle.container}></View>;
+  return (
+    <View style={NameBoxStyle.container}>
+      <Text style={NameBoxStyle.song}>{songName}</Text>
+      <Text style={NameBoxStyle.artist}>{artistName}</Text>
+    </View>
+  );
 };
 
 export default NameBox;

@@ -11,6 +11,8 @@ const initialState = <CurrentSongInterface>{
   songName: '',
   artistName: '',
   playlistKey: '',
+  key: '',
+  songPath: '',
 };
 
 export default function currentSongReducer(

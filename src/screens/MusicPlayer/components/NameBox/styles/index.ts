@@ -3,23 +3,30 @@ import { Colors } from '../../../../../constants';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: 350,
+    width: 350,
     padding: 20,
     justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    shadowOffset: { width: 0, height: 4 },
+    shadowColor: 'black',
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    margin: 20,
+    backgroundColor: Colors.lightPrimary,
   },
-  text: {
+  song: {
     textAlign: 'center',
-    color: 'white',
+    color: Colors.complementary,
+    fontWeight: 'bold',
+    fontSize: 30,
+    marginBottom: 20,
   },
-  item: {
+  artist: {
     padding: 10,
-    color: 'white',
-    fontSize: 18,
-  },
-  view: {
-    padding: 10,
-    borderBottomColor: Colors.white,
-    borderBottomWidth: 2,
+    fontWeight: '300',
+    color: Colors.complementary,
   },
 });
 
