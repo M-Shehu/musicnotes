@@ -21,7 +21,7 @@ export interface StateInterface {
 
 export interface updatePlaylist {
   key: string;
-  song: string;
+  song: SongsInterface;
 }
 
 export interface UpdatePlaylistAction {
