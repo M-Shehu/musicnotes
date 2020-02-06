@@ -64,9 +64,9 @@ const SongSelection: React.FC<Props> & {
           onPress={onAddSongToPlaylist(playlistKey, item)}>
           <View style={SongSelectionStyle.view}>
             <Text style={SongSelectionStyle.item}>{item.songName}</Text>
-            {playlistSongs.includes(item) && (
-              <Text style={SongSelectionStyle.selectedTag}>Selected</Text>
-            )}
+            {playlistSongs.find(
+              ({ songName }) => songName === item.songName,
+            ) && <Text style={SongSelectionStyle.selectedTag}>Selected</Text>}
           </View>
         </TouchableHighlight>
       )}

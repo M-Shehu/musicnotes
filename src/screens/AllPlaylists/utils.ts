@@ -19,8 +19,11 @@ export const updatePlaylistWithSong = (
 ) => {
   const { key, song } = action.payload;
   let playlist = state[key];
-  if (playlist.songs.includes(song)) {
-    playlist.songs.splice(playlist.songs.indexOf(song), 1);
+  if (playlist.songs.find(({ songName }) => song.songName === songName)) {
+    playlist.songs.splice(
+      playlist.songs.map(({ songName }) => songName).indexOf(song.songName),
+      1,
+    );
   } else {
     playlist.songs = [...playlist.songs, song];
   }
